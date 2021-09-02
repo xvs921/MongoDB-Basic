@@ -1,0 +1,4 @@
+show dbs
+use [dbname] -> open the named database
+show colections
+db.[collectionname].find<>
