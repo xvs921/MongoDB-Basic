@@ -2,3 +2,4 @@ show dbs
 use [dbname] -> open the named database
 show colections
 db.[collectionname].find()
+db.[collectionname].find().pretty() -> bson structured return data(similar to json)
