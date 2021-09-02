@@ -2,11 +2,11 @@ mongod
 mongo
 
 show dbs
-use [dbname] -> open the named database
+use [dbname] //open the named database
 show collections
 
 db.[collectionname].find()
-db.[collectionname].find().pretty() -> bson structured return data(similar to json)
+db.[collectionname].find().pretty() //readable structured return data(similar to json)
 
 db.createCollection("[collectionname]")
 
@@ -30,7 +30,7 @@ db.car.update({
     }
 })
 
---NEW COLUMN TO COLLECTION
+New column to collection
 db.car.update({
     name: 'ford'
     },
@@ -47,3 +47,48 @@ db.users.insert({
     password: '444',
     role: 'admin'
 })
+
+db.student.find({})
+db.student.find({'name': 'Rachel'})
+db.student.find({units: {$gt: 6}}) //greater than
+db.student.find({units: {$lt: 7}}) //less than
+db.student.find({classes: {$in: ['history']}})
+
+db.student.find({classes: {$in: ['history']}}).sort({units: -1}) //descending
+db.student.find({}).sort({name: 1}) //ascending
+
+db.student.find({}).sort({name: 1}).limit(2)
+
+
+INSERT FOR TRY SORTING
+db.student.insert({
+    name: 'Joe',
+    undergrad: true,
+    units: 9,
+    classes: ['geography', 'math', 'journalism']
+})
+
+db.student.insert({
+    name: 'Jane',
+    undergrad: false,
+    units: 12,
+    classes: ['geography', 'science', 'journalism', 'history']
+})
+
+db.student.insert({
+    name: 'Kevin',
+    undergrad: true,
+    units: 3,
+    classes: ['geography']
+})
+
+db.student.insert({
+    name: 'Rachel',
+    undergrad: false,
+    units: 6,
+    classes: ['geography', 'history']
+})
+
+
+DOCUMENTATION
+https://docs.mongodb.com/manual/crud/
